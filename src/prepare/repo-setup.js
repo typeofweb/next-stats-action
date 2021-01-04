@@ -11,7 +11,7 @@ module.exports = actionInfo => {
       await exec(`git clone ${actionInfo.gitRoot}${repoPath} ${dest}`)
     },
     async checkoutRef(ref = '', repoDir = '') {
-      await exec(`cd ${repoDir} && git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git fetch && git remote -v && git branch && git checkout ${ref}`)
+      await exec(`cd ${repoDir} && git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git fetch origin && git checkout ${ref}`)
     },
     async getLastStable(repoDir = '', ref) {
       const { stdout } = await exec(`cd ${repoDir} && git tag -l`)

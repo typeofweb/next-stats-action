@@ -14,7 +14,7 @@ const {
   getLastStable,
 } = require('./prepare/repo-setup')(actionInfo)
 
-const allowedActions = new Set(['synchronize', 'opened'])
+const allowedActions = new Set(['synchronize', 'opened', 'created'])
 
 if (!allowedActions.has(actionInfo.actionName) && !actionInfo.isRelease) {
   logger(

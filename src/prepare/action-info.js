@@ -12,6 +12,7 @@ module.exports = function actionInfo() {
     GITHUB_REPOSITORY,
     GITHUB_EVENT_PATH,
     PR_STATS_COMMENT_TOKEN,
+    BRANCH,
   } = process.env
 
   delete process.env.GITHUB_TOKEN
@@ -28,7 +29,7 @@ module.exports = function actionInfo() {
     customCommentEndpoint: !!commentEndpoint,
     gitRoot: GIT_ROOT_DIR || 'https://github.com/',
     prRepo: GITHUB_REPOSITORY,
-    prRef: GITHUB_REF,
+    prRef: BRANCH ? `refs/heads/${BRANCH}` : GITHUB_REF,
     commitId: null,
     issueId: ISSUE_ID,
     isRelease: releaseTypes.has(GITHUB_ACTION),
